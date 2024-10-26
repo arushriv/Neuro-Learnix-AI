@@ -1,4 +1,4 @@
-![Doctor's Prescription System](docs/github-banner.png)
+![Doctor's Prescription System]
 
 # Doctor's Prescription System
 
