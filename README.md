@@ -2,6 +2,12 @@
 
 This project uses handwriting recognition to recognize the names of medicines from a doctor's prescription. This is done using a Convolutional Neural Network (CNN) developed using the Tensorflow Framework and OpenCV.
 
+• In the healthcare sector, the legibility of handwritten notes can significantly impact patient safety and the quality of care provided. Doctors often rely on handwritten notes for documenting patient histories, treatment plans, and prescriptions. However, illegible handwriting can lead to misinterpretations, medication errors, and compromised patient outcomes. 
+
+• This project aims to develop a handwriting prediction tool leveraging Artificial Intelligence (AI), Machine Learning (ML), and Deep Learning techniques to convert handwritten medical text into clear, legible digital text. 
+
+• By improving the readability of handwritten documents, we can enhance communication among healthcare professionals, reduce errors, and ultimately provide better patient care.
+
 The project can be divided into two distinct components as follows -
 
 1. Handwriting Recognition Pipeline
@@ -68,8 +74,6 @@ The handwritten character recognition model was developed using Tensorflow and K
 - Dropout
 - Dense (Output Layer)
 
-[The structure of the Handwriting Recognition Model]
-
 ## Deployment
 
 The handwriting recognition model was deployed to the android application using the TensorFlow Lite library. For the handwriting recognition to take place, a series of steps are followed to make sure that the image is processed properly and the relevant data is fed to the model for handwritten character recognition. The steps followed in the processing and handwritten character recognition on an input image are as follows -
@@ -78,21 +82,10 @@ The handwriting recognition model was deployed to the android application using 
 
 The image is loaded using OpenCV's `imread` function and is then resized using the `resize` function to make an image having the dimensions of **300x300 pixels**.
 
-Here what the image looks like after loading and resizing.
-
-<p align="center">
-  <img src="docs/input_image.png">
-</p>
-
 ### **Step 2: Grayscale Conversion**
 
 The image is converted into a grayscale image using the `cvtColor` function along with the `COLOR_RGB2GRAY` color space conversion code. The image is converted into a grayscale image primarily because the dataset consisted of grayscale images and also because converting the original into a grayscale image will boost the contrast between the ink and the paper.
 
-Here's what the image looks like after grayscale conversion.
-
-<p align="center">
-  <img src="docs/grayscale_image.png">
-</p>
 
 ### **Step 3: Image Processing**
 
@@ -103,41 +96,19 @@ Multiple image processing functions are applied in order to boost the contrast a
 - **morphologyEx**: The `morphologyEx` is applied along with the **opening** operator. This helps to reduce any noise that may be present in an image.
 - **clahe**: CLAHE or Contrast Limited Adaptive Histogram Equalization is the last image processing operator that is applied on the image. It helps to increase the contrast of the given image. This helps to make contour finding more accurate.
 
-Here's what the image looks like after all the image processing operations are applied on the image. We can see that the contrast has been boosted and any existing shadows have been removed to some extent.
-
-<p align="center">
-  <img src="docs/processed_image.png">
-</p>
-
 ### **Step 4: Thresholding**
 
 The **threshold** function is used to apply thresholding. For every pixel, the same threshold value is applied. If the pixel value is smaller than the threshold, it is set to 0, otherwise it is set to a maximum value. This generates an image of binary pixel values.
 
-Here's what the image looks like after the thresholding operation has been applied. We can see that the background and foreground (text) have been clearly separated.
-
-<p align="center">
-  <img src="docs/threshold_image.png">
-</p>
 
 ### **Step 5: Contour Detection**
 
 Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition. We can use this technique to find the individual characters in an image. These characters can then be cropped out and sent to the model to perform the task of character classification.
 
-The image below shows how contours get detected from the threshold image and we get the bounding boxes for each character.
-
-<p align="center">
-  <img src="docs/detected_contours.png">
-</p>
 
 ### **Step 6: Cropping & Character Recognition**
 
 After we have found the bounding boxes for all the individual characters in the image, we can crop out the individual characters to make it easy to perform the task of character recognition. At the same time, the characters are grouped together by taking into consideration the **x** and **y** coordinates of the bounding boxes. Doing this allows us to later combine the predictions to form words and ultimately get the name of the medicine in the given prescription.
-
-Here's what the characters look like after we crop them and group / order them according to the **x** and **y** coordinates of their bounding boxes.
-
-<p align="center">
-  <img src="docs/split_characters.png">
-</p>
 
 ### **Step 7: Result**
 
@@ -175,6 +146,4 @@ The Patient's Dashboard page shows a patient their information along with the cu
 ## Prescription Scanning
 
 
-When a patient clicks on the scan prescription button or the action button on the patient dashboard, they are directed to the prescription scanning page. The scanning page shows the patient a camera preview. The patient can use this to capture an image of their prescription. Once the patient has captured an image of the prescription, a cropping screen is displayed which lets them crop the image to remove any background objects. When the patient is satisfied with the cropped image, they can click the done button. The patient is then shown a confirmation page where the image is displayed. The patient has to make sure that the image is sharp and the prescription is visible so that the recognition process is efficient and accurate. The patient can tap the retry button to click another image or tap the continue button to proceed with the recognition process.
-
-If the patient taps on the continue button, the image is passed to the handwriting recognition pipeline. After getting the result from the handwriting recognition pipeline, the app runs a similarity detection check in the medicine database. This is done to minimize any errors and to get the exact name of the medicine. When a match is found, the medicine name along with its details is displayed to the patient and is added to the patient's prescription database.
+When a patient clicks on the scan prescription button or the action button on the patient dashboard, they are directed to the prescription scanning page. The scanning page shows the patient a camera preview. The patient can use this to capture an image of their prescription. Once the patient has captured an image of the prescription, a cropping screen is displayed which lets them crop the image to remove any background objects. When the patient is satisfied with the cropped image, they can click the done button. The patient is then shown a confirmation page where the image is displayed. The patient has to make sure that the image is sharp and the prescription is visible so that the recognition process is efficient and accurate. The patient can tap the retry button to click another image or tap the continue button to proceed with the recognition process. If the patient taps on the continue button, the image is passed to the handwriting recognition pipeline. After getting the result from the handwriting recognition pipeline, the app runs a similarity detection check in the medicine database. This is done to minimize any errors and to get the exact name of the medicine. When a match is found, the medicine name along with its details is displayed to the patient and is added to the patient's prescription database.
