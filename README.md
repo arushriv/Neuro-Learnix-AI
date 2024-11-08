@@ -1,6 +1,4 @@
-
-
-# Doctor's Prescription System
+# Integrating Generative AI with Machine & Deep Learning technologies for Predicting Doctors Handwriting.
 
 This project uses handwriting recognition to recognize the names of medicines from a doctor's prescription. This is done using a Convolutional Neural Network (CNN) developed using the Tensorflow Framework and OpenCV.
 
@@ -160,31 +158,22 @@ The android app for the project was built using Flutter. The app stores the user
 
 ## Sign In Page
 
-![Sign In Page](docs/sign_in.png)
-
 The Sign In Page allows a doctor or a patient to sign into the application. The user can select if they're a doctor or a patient and can enter their username and password. Additionally, the users can tap the create account button to create a new account. The authentication for the app is handled using the Firebase Authentication service and uses the email and password Authentication along with email validation to manage the authentication flow.
 
 ## Sign Up Page
-
-![Sign Up Page](docs/sign_up.png)
 
 The Sign Up page has multiple steps that are used to collect the data required to create a user's account. Initially, the user has to select whether they are a doctor or a patient and enter their email address and choose a password. In the next step, the users have to enter their name, gender, date of birth, height and weight. After they have entered the information, they will be shown a summary of all the information that they have entered. When the user clicks on the confirm button, a verification email is sent to their email address and they can then sign in to the application after verifying their email address.
 
 ## Doctor's Dashboard Page
 
-![Doctor's Dashboard Page](docs/doctor_dashboard.png)
-
 The Doctor's Dashboard page allows a doctor to view their patients and their information. This dashboard also has an action button which lets the doctor scan the QR Code of a patient which will add the patient's information to the doctor's database. The sidebar on this page has navigation buttons for the dashboard page, add patient page and a button to logout from the application.
 
 ## Patient's Dashboard Page
-
-![Patient's Dashboard Page](docs/patient_dashboard.png)
 
 The Patient's Dashboard page shows a patient their information along with the current prescription that have been assigned to them. The dashboard also has an action button which allows the patient to scan a new prescription. Additionally, the sidebar provides navigation buttons which let the patient navigate to the Dashboard, Prescription Scanning Page, QR Generation Page and a button to logout from the application.
 
 ## Prescription Scanning
 
-![Prescription Scanning](docs/prescription_scanning.png)
 
 When a patient clicks on the scan prescription button or the action button on the patient dashboard, they are directed to the prescription scanning page. The scanning page shows the patient a camera preview. The patient can use this to capture an image of their prescription. Once the patient has captured an image of the prescription, a cropping screen is displayed which lets them crop the image to remove any background objects. When the patient is satisfied with the cropped image, they can click the done button. The patient is then shown a confirmation page where the image is displayed. The patient has to make sure that the image is sharp and the prescription is visible so that the recognition process is efficient and accurate. The patient can tap the retry button to click another image or tap the continue button to proceed with the recognition process.
 
