@@ -70,7 +70,7 @@ The handwritten character recognition model was developed using Tensorflow and K
 - Dropout
 - Dense (Output Layer)
 
-![The structure of the Handwriting Recognition Model](docs/model.png)
+[The structure of the Handwriting Recognition Model]
 
 ## Deployment
 
